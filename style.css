@@ -1,0 +1,153 @@
+body {
+    font-family: "Bitter", serif;
+    background: #333;
+    color: white;
+    margin: 30px;
+}
+
+#app {
+    text-align: center;
+    margin: 60px;
+    margin: 0 auto;
+    display: table;
+}
+
+button {
+    font-family: "Bitter";
+    background: #c62735;
+    color: white;
+    border: 0;
+    padding: 5px 15px;
+    margin: 0 10px;
+    border-radius: 4px;
+    outline: 0;
+    cursor: pointer;
+}
+
+.img-contain {
+    width: 250px;
+    height: 160px;
+    overflow: hidden;
+    transform-origin: 50% 50%;
+}
+
+img {
+    width: 100%;
+    transform-origin: 50% 50%;
+    cursor: pointer;
+    transform: scaleY(1) translateZ(0);
+    margin: 5px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.img-contain:hover .overlay {
+    opacity: 1;
+    background: hsla(50, 0%, 0%, 0.6);
+    transition: 0.3s all ease-out;
+}
+
+.img-contain .overlay {
+    position: absolute;
+    z-index: 1000;
+    display: block;
+    width: 245px;
+    height: 155px;
+    margin: 5px;
+    opacity: 0;
+    overflow: hidden;
+    transition: 0.3s all ease-in;
+}
+
+.overlay-text {
+    margin-top: 40px;
+}
+
+h4 {
+    margin: 0 0 15px;
+}
+
+.flip-enter-active {
+    transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    transform-origin: 50% 50%;
+}
+
+.flip-leave-active {
+    transform-origin: 50% 50%;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.flip-enter-from,
+.flip-leave-to {
+    transform-origin: 50% 50%;
+    transform: scaleY(0) translateZ(0);
+    opacity: 0;
+}
+
+.box {
+    width: 50px;
+    height: 30px;
+    background: teal;
+    margin-top: 20px;
+    color: white;
+    /* margin-left: 400px; */
+}
+
+.box p {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.bounce-enter-active {
+    animation: bounce-in .5s ease-out both;
+}
+
+.bounce-leave-active {
+    animation: bounce-in .5s reverse ease-in both;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.component-fade-enter-active,
+.component-fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.component-fade-enter-from,
+.component-fade-leave-to {
+    opacity: 0;
+}
+
+.demo {
+    font-family: sans-serif;
+    border: 1px solid #eee;
+    border-radius: 2px;
+    padding: 20px 30px;
+    margin-top: 1em;
+    margin-bottom: 40px;
+    user-select: none;
+    overflow-x: auto;
+}
+
+
+/* body {
+    margin: 30px;
+}
+
+
+
+ */

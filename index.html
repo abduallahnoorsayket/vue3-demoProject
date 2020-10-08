@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Required meta tags -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Transition Modes flipcards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
+    <!-- Bootstrap CDN -->
+
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet" type="text/css" /> -->
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <div id="app">
+                    <h3>Hover here to change.</h3>
+                    <main>
+                        <app-child>
+                            <img src='images/sayket01.JPG' alt='image of a woman on a train'>
+                        </app-child>
+                        <app-child>
+                            <img src='images/sayket02.jpg' alt='drawing of a woman sharing soda with a zombie'>
+                        </app-child>
+                        <br>
+                        <br>
+
+
+                    </main>
+
+                </div>
+
+                <div class="mt-4 text-center">
+                    <div id="demo">
+                        <button @click="show = !show">   Toggle        </button>
+
+                        <transition @beforeEnter="beforeEnter" @enter="enter" @leave="leave" :css="false">
+                            <div v-if="show" class="box">
+                                <p class="text-center">Hello</p>
+                            </div>
+                        </transition>
+                    </div>
+
+                </div>
+
+                <div class="mt-4 text-center">
+                    <div id="demon">
+                        <button @click="show = !show">Toggle show</button>
+
+                        <transition name="bounce">
+                            <p class="text-center mt-2" v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus. at lacinia diam fermentum id. Pellentesque habitant
+                                morbi tristique senectus et netus</p>
+                        </transition>
+                    </div>
+                </div>
+
+                <div id="demo" class="demo">
+                    <input v-model="view" type="radio" value="v-a" id="a"><label for="a">A</label>
+                    <input v-model="view" type="radio" value="v-b" id="b"><label for="b">B</label>
+                    <transition name="component-fade" mode="out-in">
+                        <component :is="view"></component>
+                    </transition>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script src="app.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js">
+    </script>
+</body>
+
+</html>
