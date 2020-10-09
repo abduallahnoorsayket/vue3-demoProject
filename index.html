@@ -13,7 +13,10 @@
     <script src="https://unpkg.com/vue@next"></script>
     <title>Transition Modes flipcards</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
+
+
     <!-- Bootstrap CDN -->
 
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet" type="text/css" /> -->
@@ -57,22 +60,75 @@
 
                 <div class="mt-4 text-center">
                     <div id="demon">
-                        <button @click="show = !show">Toggle show</button>
+                        <button @click="showMessage = !showMessage">Toggle show</button>
 
                         <transition name="bounce">
-                            <p class="text-center mt-2" v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus. at lacinia diam fermentum id. Pellentesque habitant
+                            <p class="text-center mt-2" v-if="showMessage">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus. at lacinia diam fermentum id. Pellentesque habitant
                                 morbi tristique senectus et netus</p>
                         </transition>
                     </div>
                 </div>
 
-                <div id="demo" class="demo">
-                    <input v-model="view" type="radio" value="v-a" id="a"><label for="a">A</label>
-                    <input v-model="view" type="radio" value="v-b" id="b"><label for="b">B</label>
+                <div id="demoCompoent" class="demoCompoent">
+                    <input v-model="view" type="radio" value="v-a" id="a"><label for="a">Pyhothon</label>
+                    <input v-model="view" type="radio" value="v-b" id="b" class="ml-4"><label for="b">Php</label>
                     <transition name="component-fade" mode="out-in">
                         <component :is="view"></component>
                     </transition>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="list-complete-demo" class="demoGroup">
+                            <button @click="shuffle">Shuffle</button>
+                            <button @click="add">Add</button>
+                            <button @click="remove">Remove</button>
+                            <transition-group name="list-complete" tag="p">
+                                <span v-for="item in items" :key="item" class="list-complete-item">
+                                {{ item }}
+                              </span>
+                            </transition-group>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="demofilter">
+                            <input v-model="query" />
+                            <transition-group name="staggered-fade" tag="ul" :css="false" @before-enter="beforeEnter" @enter="enter" @leave="leave">
+                                <li v-for="(item, index) in computedList" :key="item.msg" :data-index="index">
+                                    {{ item.msg }}
+                                </li>
+                            </transition-group>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                        <div id="sumapp">
+                            <div class="row">
+                                <div class="col-6">
+                                    <input v-model.number="firstNumber" type="number" step="20">
+                                </div>
+                                +
+
+                                <div class="col-6">
+                                    <input v-model.number="secondNumber" type="number" step="20">
+                                </div>
+                            </div>
+                            = {{ result }}
+                            <p>
+                                <animated-integer :value="firstNumber"></animated-integer> +
+                                <animated-integer :value="secondNumber"></animated-integer> =
+                                <animated-integer :value="result"></animated-integer>
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="mt-2 text-center">
+
+                </div>
+
 
             </div>
         </div>
