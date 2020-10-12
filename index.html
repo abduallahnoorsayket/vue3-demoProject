@@ -125,13 +125,27 @@
                     </div>
                 </div>
 
-                <div class="mt-2 text-center">
+                <div id="dynamic-arguments-example" class="demoDynamicArg full-page">
+                    <h2>Scroll the page to down</h2>
+                    <input type="range" min="0" max="500" v-model="pinPadding">
+                    <p v-pin:[direction]="pinPadding">Stick me 200px from the {{ direction }} of the page</p>
+                </div>
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-12">
 
+                        </div>
+                    </div>
+                </div>
+                <div id="simplest-directive-example" class="demo">
+                    <input v-focus />
                 </div>
 
 
             </div>
+
         </div>
+
     </div>
 
 

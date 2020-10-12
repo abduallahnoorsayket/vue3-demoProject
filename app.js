@@ -242,3 +242,38 @@ sumapp.component('animated-integer', {
 })
 
 sumapp.mount('#sumapp')
+
+// dynamin binding and  Arguments
+
+const dynamicapp = Vue.createApp({
+    data() {
+        return {
+            direction: 'right',
+            pinPadding: 500,
+        }
+    }
+});
+
+dynamicapp.directive('pin', {
+    mounted(el, binding) {
+        el.style.position = 'fixed'
+        const s = binding.arg || 'top'
+        el.style[s] = binding.value + 'px'
+    },
+    updated(el, binding) {
+        const s = binding.arg || 'top'
+        el.style[s] = binding.value + 'px'
+    }
+})
+
+dynamicapp.mount('#dynamic-arguments-example')
+
+const customapp = Vue.createApp({});
+
+app.directive('focus', {
+    mounted(el) {
+        el.focus()
+    }
+})
+
+customapp.mount('#simplest-directive-example')
