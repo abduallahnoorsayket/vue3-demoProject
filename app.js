@@ -270,7 +270,7 @@ dynamicapp.mount('#dynamic-arguments-example')
 
 const customapp = Vue.createApp({});
 
-app.directive('focus', {
+customapp.directive('focus', {
     mounted(el) {
         el.focus()
     }
